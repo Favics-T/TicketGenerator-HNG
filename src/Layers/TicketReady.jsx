@@ -11,42 +11,7 @@ const TicketReady = () => {
   const ticketRef = useRef(null);
   const navigate = useNavigate();
 
-  const downloadTicket = async () => {
-    if (!ticketRef.current) return;
   
-    try {
-      
-      const images = ticketRef.current.getElementsByTagName("img");
-  
-            await Promise.all(
-        Array.from(images).map(
-          (img) =>
-            new Promise((resolve) => {
-              if (img.complete) resolve(); 
-              else img.onload = img.onerror = resolve;
-            })
-        )
-      );
-  
-      
-      const canvas = await html2canvas(ticketRef.current, { 
-        scale: 2,
-        useCORS: true,
-        allowTaint: true,
-        backgroundColor: null 
-      });
-  
-      
-      const link = document.createElement("a");
-      link.href = canvas.toDataURL("image/png");
-      link.download = "Techember_Ticket.png";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } catch (error) {
-      console.error("Error generating ticket image:", error);
-    }
-  };
   
 
   return (
@@ -196,7 +161,7 @@ className='px-8 flex justify-center py-1  md:h-[115px] h-[90px] border-[#19cae9]
             <button 
             className='flex cursor-pointer flex-[1_0_0] text-[16px] font-normal
              text-[#fff] font-[JejuMyeongjo] bg-[#24a0b5] rounded-[8px] py-[12px] px-[24px] items-center justify-center gap-[8px] border border-[#24A0B5]'
-             onClick={downloadTicket}>  Download Ticket  </button>  
+             >  Download Ticket  </button>  
              
              </div>
   {/* button ends here */}
