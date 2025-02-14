@@ -7,8 +7,8 @@ const Home = () => {
     
    
   
-    <div className='flex flex-col  bg-[#03161a] width-full overflow-x-hidden
-    py-[112px] px-[0px] items-center gap-[80px]  '>
+    <div className='flex flex-col pt-[12p] h-screen  bg-[#03161a] width-full overflow-x-hidden
+     px-[0px] items-center gap-[80px]  '>
       
     <SelectTicket />
       

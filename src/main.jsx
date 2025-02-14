@@ -5,11 +5,12 @@ import App from './App.jsx'
 import { FormProvider } from './Context/FormContext.jsx'
 
 createRoot(document.getElementById('root')).render(
+  <StrictMode> 
  <FormProvider>
-<StrictMode>
     <App />
-  </StrictMode>,
  </FormProvider>
+ </StrictMode>,
+ 
 
   
   

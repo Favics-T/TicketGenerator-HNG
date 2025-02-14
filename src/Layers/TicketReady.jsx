@@ -1,79 +1,124 @@
-import React from 'react'
+ 
+import { useContext, useRef } from "react";
+import { useNavigate } from "react-router-dom"
+import html2canvas from "html2canvas"
+import FormContext from "../Context/FormContext";
 
-const TicketReady = () => {
+
+const ready = () => {
+    const navigate = useNavigate();
+    const ticketRef = useRef(null);
+    const{formData}=useContext(FormContext)
+
+    const ticketDetails = JSON.parse(localStorage.getItem("ticketDetails"));
+  const attendeeDetails = JSON.parse(localStorage.getItem("attendeeDetails"));
+
+   const downloadTicket = () => {
+    if (!ticketRef.current) return;
+
+    setTimeout(() => {
+    html2canvas(ticketRef.current, { 
+      scale: 2,
+      useCORS: true, // Allows loading external images
+      allowTaint: true, //  Prevents cross-origin issues
+
+     }).then((canvas) => {
+      const link = document.createElement("a");
+      link.href = canvas.toDataURL("image/png");
+      link.download = "Techember_Ticket.png";
+      link.click();
+    });
+  }, 3000);  //Waits 3 second for images to load
+  }
+
   return (
     <div>
         
-      <div className='flex flex-col items-center gap-[80px] h-auto text-white bg-[#041e23] py-[112px] px-[0px] '>
-   {/* Ticket Body starts here */}
-    <div className='bg-[ #041E23]  border w-[700px] p-[48px] flex flex-col
-    justify-center items-center border-[#0E464F] gap-[32px] rounded-[24px] '>
- 
+        <div className="border-[#0e464f] max-w-screen-sm  mt-7 p-7 m-auto border-2 rounded-3xl">
+        <div className="border-b-2 border-[#0e464f] md:flex justify-between items-center w-full pb-3 relative">
+          <h1 className="h1_line text-white text-2xl">Ready</h1>
+          <p className="p_line text-gray-300 text-lg">step 3 / 3</p>
+          <span className="absolute w-10/12 md:w-1/3"></span>
+        </div>
 
+        <div className='text-center mt-5'>
+            <h2 className='text-white font-bold text-3xl'>Your Ticket is Booked!</h2>
+            <p className='text-gray-300 font-semibold mt-5'>Check your email for a copy or you can download</p>
+        </div>
 
-{/* Header starts here */}
-<div>
-    <div className='flex gap-96 self-stretch   items-center '>
-       
-    <h1 className='text-[#fff] font-[JejuMyeongjo] text-[32px] font-normal '>Ready</h1>
-    <p 
-className='text-[#fafafa] font-[Roboto] text-[16px] font-normal  '>Step 3/3</p>
-    </div>
+            {/* Ticket Section (To be captured) */}
+        <div className='relative mt-10' ref={ticketRef}>  
+            <img src='' alt="" className='m-auto' />
+            <div className='w-[45%] h-[73%] border-[#24a0b5] border absolute top-6 md:left-40 rounded-xl'>
+            <h1 className="font-RoadRage text-3xl text-white absolute top-3 left-11">
+              Techember Fest "25
+            </h1>
+            <p className='absolute top-11 text-gray-300 text-sm left-6'>📍 04 Runners road, Ikoyi, Lagos.</p>
+            <p className='absolute top-16 text-gray-300 text-sm left-9'>📆 March 15,2025 | 7:00pm</p>
+            
+            {/* Handles imnage uplaoad */}
+            <img src={formData.avatar} alt="Avatar" crossOrigin="anonymous"  className='img_upload w-1/2 h-1/4 border-4 rounded-2xl absolute top-28 left-16' />
 
-    {/* Progress bar starts here */}
-    <div className='rounded-[5px] self-stretch
-    items-center  
-     flex h-[4px] pr-[372px] bg-[#0E464F] '>
-          <div className='rounded-[5px] bg-[#24A0B5] w-[232px] self-stretch'></div>
-        <div></div>
-    </div>
-    {/* Progress bar ends here */}
+            <div className='ticket_req w-11/12 border absolute top-60 left-3 p-1 rounded-xl'>
+                <div className='mb_input flex gap-1 border-b-2'>
+                    <div  className='mb_input w-1/2 border-r-2 overflow-x-auto whitespace-nowrap scrollabar-hide'>
+                        <p className='text-sm text-gray-400 pr-'>Enter your name</p>
+                        <p className="text-white text-sm mt-2 inline-flex">{formData.name}</p>
+                    </div>
 
-</div>
-{/* Header ends here */}
+                    <div className='mb_input w-1/2 overflow-x-auto whitespace-nowrap scrollabar-hide'>
+                        <p className='text-sm text-gray-400 pl-1' >Enter your email*</p>
+                        <p className="text-gray-300 text-s mt-2 inline-flex">{formData.email}</p>
+                    </div>
+                </div>
 
-{/* Booked Ticket Mesage starts here */}
-<div>
-    <h1 className='text-[#fff] self-stretch font-normal text-[32px] text-center font-[Alatsi]  '>Your Ticket is Booked Here</h1>
-    <p className='font-[Roboto] text-[#fafafa]
-    text-center text-[16px] font-normal   '>
-           You can download or check your email for a copy</p>
-</div>
-{/* Booked Ticket Messge ends here */}
+                <div className='mb_input flex gap-1 border-b-2'>
+                    <div  className='mb_input w-1/2 border-r-2'>
+                        <p className='text-sm text-gray-400'>Ticket Type:</p>
+                        <p className="text-white text-sm mt-2" >{ticketDetails?.type}</p>
+                    </div>
 
-{/* Ticket Image Starts Here  */}
-<div className='w-[562px] h-[199.849px] fill-[#D9D9D9] flex shrink-0'>
-<div className='flex  shrink-0 bg-[#0E464F]  border w-[467.562px] h-[195.004px] rounded-[16.957px_4.845px_4.845px_16.957px]'>
-    
-</div>
-</div>
-{/* Ticket Image Ends here */} 
+                    <div className='mb_input w-1/2 '>
+                        <label className='text-sm text-gray-400 pl-1' >Ticket For:</label>
+                        <p className="text-gray-300 text-sm mt-2 ">{ticketDetails?.quantity}</p>
+                    </div>
+                </div>
 
-{/* buttons starts here */}
+                {/* Display Textarea Input */}
+          <div className="mt-2">
+            <p className="text-gray-400 text-sm">Special Request?</p>
+            <p className="text-gray-300 text-sm pt-1 rounded-md">{attendeeDetails?.textArea}</p>
+          </div>
+            </div>
 
-<div className=' items-center gap-[32] justify-center 
-p-[48]  rounded-[24px] self-stretch flex h-[48px] 
-border border-[#0E464F] bg-[#041E23] '>
+                
+            </div>
+            {/* QR Code */}
+            <div id="qrCode" className="absolute bottom-5 left-10 md:left-44">
+                    <img src="" alt="QR Code" crossOrigin="anonymous" />
+                </div>
+        </div>
 
-
-<button
-className='text-[#24a0b5] text-[16px] font-normal  font-[JejuMyeongjo] flex rounded-[8px] py-[12px] px-[24px] border-[#24a0b5] gap-[8px] border  flex-[1_0_0] justify-center items-center   '
->Book Another Ticket</button>
-
-
-<button className='flex py-[12px] px-[24px] justify-center items-center gap-[8px] flex-[1_0_0] 
-rounded-[8px] bg-[#24a0b5] text-[#FAFAFA] font-[JejuMyeongjo] text-[16px] font-normal '>Download Ticket</button>
-
-</div>
-{/* buttons ends here */}
-   
-   
-    </div>
-    {/* Ticket Body Ends Here */}
-
-      </div>
+          {/* handles buttons */}
+          <div className="btn_2 justify-between gap-5 mt-5">
+            <button
+              onClick={() => navigate("/")}
+              className="btn_1 md:w-1/2 border-2 p-3 text-xl rounded-xl"
+            >
+              Book Another Ticket
+            </button>
+            <button
+              type="button"
+              onClick={downloadTicket}
+              className="border-[#24a0b5] text-[#24a0b5] hover:bg-[#24a0b5] hover:text-white md:w-1/2 border-2 p-3 text-xl rounded-xl"
+            >
+              Download Ticket
+            </button>
+          </div>
+        </div>
+      
     </div>
   )
 }
 
-export default TicketReady
+export default ready
