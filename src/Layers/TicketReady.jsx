@@ -15,29 +15,28 @@ const TicketReady = () => {
     if (!ticketRef.current) return;
   
     try {
-      // Get all images inside the ticket
+      
       const images = ticketRef.current.getElementsByTagName("img");
   
-      // Ensure all images are fully loaded before capturing the ticket
-      await Promise.all(
+            await Promise.all(
         Array.from(images).map(
           (img) =>
             new Promise((resolve) => {
-              if (img.complete) resolve(); // If already loaded, resolve immediately
-              else img.onload = img.onerror = resolve; // Otherwise, wait for load/error
+              if (img.complete) resolve(); 
+              else img.onload = img.onerror = resolve;
             })
         )
       );
   
-      // Now that images are loaded, capture the ticket
+      
       const canvas = await html2canvas(ticketRef.current, { 
         scale: 2,
         useCORS: true,
         allowTaint: true,
-        backgroundColor: null // Ensures transparent background if applicable
+        backgroundColor: null 
       });
   
-      // Create download link and trigger download
+      
       const link = document.createElement("a");
       link.href = canvas.toDataURL("image/png");
       link.download = "Techember_Ticket.png";
@@ -74,7 +73,7 @@ self-stretch'>
 
 {/* progress bar starts here */}
 <div className='flex w-[280px] md:w-[604px] bg-[#0E464F] h-[4px] self-stretch rounded-[5px]'>
-  <div className='bg-[#24A0B5] w-[232px] md:w-[325px]'></div>
+  <div className='bg-[#24A0B5] w-1/3 md:w-1/3'></div>
   <div></div>
 </div>
 {/* progress bar ends here */}
