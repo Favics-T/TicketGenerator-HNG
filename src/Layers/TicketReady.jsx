@@ -14,23 +14,41 @@ const TicketReady = () => {
   const ticketDetails = JSON.parse(localStorage.getItem("ticketDetails"));
   const attendeeDetails = JSON.parse(localStorage.getItem("attendeeDetails"));
 
-  const downloadTicket =  () => {
+  const downloadTicket = async () => {
     if (!ticketRef.current) return;
-
-    setTimeout(() => {
-    html2canvas(ticketRef.current, { 
-      scale: 2,
-      useCORS: true, 
-      allowTaint: true, 
-
-     }).then((canvas) => {
+  
+    try {
+      // Ensure images inside the ticket are loaded before capturing the canvas
+      const images = ticketRef.current.getElementsByTagName("img");
+      await Promise.all(
+        Array.from(images).map(
+          (img) =>
+            new Promise((resolve) => {
+              if (img.complete) resolve();
+              else img.onload = img.onerror = resolve;
+            })
+        )
+      );
+  
+      // Capture the ticket as an image
+      const canvas = await html2canvas(ticketRef.current, { 
+        scale: 2,
+        useCORS: true, 
+        allowTaint: true 
+      });
+  
+      // Create a download link
       const link = document.createElement("a");
       link.href = canvas.toDataURL("image/png");
       link.download = "Techember_Ticket.png";
       link.click();
-    });
-  }, 3000);  
-  } 
+    } catch (error) {
+      console.error("Error generating ticket image:", error);
+    }
+  };
+  
+
+ 
 
 
 
