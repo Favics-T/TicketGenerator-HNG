@@ -11,47 +11,44 @@ const TicketReady = () => {
   const ticketRef = useRef(null);
   const navigate = useNavigate();
 
-  const ticketDetails = JSON.parse(localStorage.getItem("ticketDetails"));
-  const attendeeDetails = JSON.parse(localStorage.getItem("attendeeDetails"));
-
   const downloadTicket = async () => {
     if (!ticketRef.current) return;
   
     try {
-      // Ensure images inside the ticket are loaded before capturing the canvas
+      // Get all images inside the ticket
       const images = ticketRef.current.getElementsByTagName("img");
+  
+      // Ensure all images are fully loaded before capturing the ticket
       await Promise.all(
         Array.from(images).map(
           (img) =>
             new Promise((resolve) => {
-              if (img.complete) resolve();
-              else img.onload = img.onerror = resolve;
+              if (img.complete) resolve(); // If already loaded, resolve immediately
+              else img.onload = img.onerror = resolve; // Otherwise, wait for load/error
             })
         )
       );
   
-      // Capture the ticket as an image
+      // Now that images are loaded, capture the ticket
       const canvas = await html2canvas(ticketRef.current, { 
         scale: 2,
-        useCORS: true, 
-        allowTaint: true 
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: null // Ensures transparent background if applicable
       });
   
-      // Create a download link
+      // Create download link and trigger download
       const link = document.createElement("a");
       link.href = canvas.toDataURL("image/png");
       link.download = "Techember_Ticket.png";
+      document.body.appendChild(link);
       link.click();
+      document.body.removeChild(link);
     } catch (error) {
       console.error("Error generating ticket image:", error);
     }
   };
   
-
- 
-
-
-
 
   return (
     <div className='flex justify-center text-white'>
@@ -76,7 +73,7 @@ self-stretch'>
 
 
 {/* progress bar starts here */}
-<div className='flex w-[287px] md:w-[604px] bg-[#0E464F] h-[4px] self-stretch rounded-[5px]'>
+<div className='flex w-[280px] md:w-[604px] bg-[#0E464F] h-[4px] self-stretch rounded-[5px]'>
   <div className='bg-[#24A0B5] w-[232px] md:w-[325px]'></div>
   <div></div>
 </div>
@@ -85,11 +82,11 @@ self-stretch'>
 {/* Header Ends Here */}
 
 {/* Body Start here */}
-<div className='p-[24px] grid place-items-center gap-[32px] '>
+<div className='p-[24px]  grid place-items-center gap-[32px] '>
 
    {/* Your Ticket is Booked & co starts here  */}
    <div className='text-[#fafafa] font-Inter flex flex-col  text-center justify-center items-center'>
-    <h1 className='text-[40px] font-Inter'>Your Ticket is Booked!</h1>
+    <h1 className='md:text-[40px] text-[24px] font-Inter'>Your Ticket is Booked!</h1>
     <p className=''>Check Your email for a copy or you can <span className='font-extrabold'>download</span> </p>
    </div>
    {/* Your Ticket is Booked & co ends here  */}
@@ -97,32 +94,32 @@ self-stretch'>
 {/* Ticket Frame Starts Here */}
 <div className='relative w-full' ref={ticketRef}>
 <div className='' >
-<img src={Frame} alt="" />
+<img src={Frame} alt="Frame" />
 </div>
 {/* Frame div ends here */}
 
 <div className='mt-2'>
  
 {/* Text div starts here */}
-<div className='border h-[450px] w-[280px] font-Roboto    absolute bottom-[140px] left-[2%]  p-[40px] rounded-[24px] border-[#0e464f] '>
+<div className='border md:h-[450px] h-[440px] md:w-[280px] w-[250px] font-Roboto absolute bottom-[118px] md:bottom-[140px] md:left-[2%] left-[5%]  p-[40px] rounded-[24px] border-[#0e464f] '>
 {/* title and location starts here */}
-    <div className='-mt-10'>
+    <div className='md:-mt-10 -mt-8'>
       
-    <div>
+    <div className='text-center'>
     <h1 className='md:text-[32px]  text-center text-[20px] text-[#fafafa] font-RoadRage '>TECHEMBER FEST "25</h1>
     <p>📍 04 Rumens road, Ikoyi, Lagos</p>
-    <p>March 15, 2025 | 7:00 PM</p>
+    <p>📆 March 15, 2025 | 7:00 PM</p>
     </div>
 {/* title and location ends here */}
 <div
-className='px-8 h-1/4 border-[#19cae9] bg-[#198699]  border-4 rounded-2xl py-1 ' >
+className='px-8 flex justify-center py-1  md:h-[115px] h-[90px] border-[#19cae9] bg-[#198699]  border-4 rounded-2xl  ' >
 <img src={formData.avatar} alt="Avatar" crossOrigin="anonymous" 
- className=' rounded-lg ' />
+ className=' rounded-lg md:h-[100px] h-[70px]'/>
 </div>
 
-<div className='bg-[#0a4149] gap-4 text-white text-[10px] rounded-[24px] px-4 mt-4 py-4 flex flex-col'>
+<div className='bg-[#0a4149] md:h-auto h-[200px] gap-2 text-white text-[10px] rounded-[24px] px-4 mt-4 py-4 flex flex-col'>
 {/* User Details Start here name-ticket type */}
-<div className='border-b border-[#145d68] flex flex-col gap-2 '>
+<div className='border-b border-[#145d68] object-contain flex flex-col gap-2 '>
   {/* name and email starts here */}
   <div className='flex gap-1'>
 
@@ -198,7 +195,7 @@ className='px-8 h-1/4 border-[#19cae9] bg-[#198699]  border-4 rounded-2xl py-1 '
                             
                 
             <button 
-            className='flex flex-[1_0_0] text-[16px] font-normal
+            className='flex cursor-pointer flex-[1_0_0] text-[16px] font-normal
              text-[#fff] font-[JejuMyeongjo] bg-[#24a0b5] rounded-[8px] py-[12px] px-[24px] items-center justify-center gap-[8px] border border-[#24A0B5]'
              onClick={downloadTicket}>  Download Ticket  </button>  
              
