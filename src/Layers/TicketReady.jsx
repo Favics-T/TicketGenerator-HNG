@@ -104,75 +104,70 @@ self-stretch'>
 <div className='mt-2'>
  
 {/* Text div starts here */}
-<div className='border h-[450px] w-[280px]   absolute bottom-[140px] left-[2%]  p-[40px] rounded-[24px] border-[#0e464f] '>
+<div className='border h-[450px] w-[280px] font-Roboto    absolute bottom-[140px] left-[2%]  p-[40px] rounded-[24px] border-[#0e464f] '>
 {/* title and location starts here */}
-    <div>
+    <div className='-mt-10'>
       
-    </div>
     <div>
     <h1 className='md:text-[32px]  text-center text-[20px] text-[#fafafa] font-RoadRage '>TECHEMBER FEST "25</h1>
     <p>📍 04 Rumens road, Ikoyi, Lagos</p>
     <p>March 15, 2025 | 7:00 PM</p>
     </div>
 {/* title and location ends here */}
-
-<div className='px-8 border-[#24A0B5]  border-4 rounded-2xl py-2 ' >
+<div
+className='px-8 border-[#19cae9] bg-[#198699]  border-4 rounded-2xl py-1 ' >
 <img src={formData.avatar} alt="Avatar" crossOrigin="anonymous" 
- className=' w-1/2 h-1/4 ' />
+ className=' rounded-lg ' />
 </div>
 
-<div className='border-2 gap-4 text-white text-[10px] rounded-[24px] px-4 mt-4 py-4 flex flex-col'>
-{/* User details starts here */}
-<div className='flex gap-4'>
-  {/* first div starts here */}
-  <div>
+<div className='bg-[#0a4149] gap-4 text-white text-[10px] rounded-[24px] px-4 mt-4 py-4 flex flex-col'>
+{/* User Details Start here name-ticket type */}
+<div className='border-b border-[#145d68] flex flex-col gap-2 '>
+  {/* name and email starts here */}
+  <div className='flex gap-1'>
 
+{/*name starts here  */}
+    <div className='w-1/2'>
+      <p className='text-gray-500'>Enter Your Name</p>
+      <p>{formData.name}</p>
+    </div>
+    {/* name div ends here */}
+
+    {/* email div starts here */}
+    <div className='w-1/2 '>
+      <p className='text-gray-500 '>Enter Your Email</p>
+      <p className='break-all'>{formData.email}</p>
+          </div>
+    {/* email div ends here */}
+      </div>
+  {/* name and email ends here */}
+
+  {/* ticket type start here */}
+  <div className='flex border-t px-1 border-[#145d68]'>
+    <div className='w-1/2 border-r  border-[#145d68]'>
+      <p className='text-gray-500'>Ticket Type</p>
+      <p>VIP</p>
+          </div>
+
+    <div className='flex-col flex gap-1 px-1'>
+      <p className='text-gray-500 '>Ticket Number</p>
+      <p>1</p>
+    </div>
   </div>
-  {/* first div ends here */}
-<div className='flex flex-col gap-4 '>
-    <div className=''>
-    <h1>Enter Your Name</h1>
-    <h1>{formData.name} </h1>
-    </div>
-
-    <div>
-      <h1>Ticket Type</h1>
-      <h1>VIP</h1>
-    </div>
-    </div>
-  {/* second div starts here */}
-    <div>
-
-    <div className='flex flex-col gap-4'>
-    <div className='border-b'>
-    <h1>Enter Your Email</h1>
-    <h1>{formData.email} </h1>
-    </div>
-
-    <div>
-      <h1>Ticket for:</h1>
-      <h1>1</h1>
-    </div>
-    
-  </div>
-    </div>
-  {/* second div ends here */}
-
-
+  {/* ticket type ends here */}
 </div>
-{/* User detaails ends here */}
+{/* User Details ends here  name-ticket type*/}
 
-{/* Paragraph starts here */}
+{/* Text area starts here */}
 <div>
-<div>
-    <p>Special request?</p>
-    <p>{formData.textArea}</p>
-  </div>
+  <p>Specail needs</p>
+  <p>{formData.about}</p>
 </div>
-{/* Paragraph ends here */}
+{/* Text area ends here */}
 </div>
 
-
+    </div>
+   
 
 </div>
 {/* Text Div ends Here */}
