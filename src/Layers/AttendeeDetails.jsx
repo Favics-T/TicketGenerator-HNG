@@ -195,22 +195,7 @@ p-[24px] flex-col justify-center items-star gap-[32px] self-stretch '>
                      </div>
 
 
-            {/* <div className='flex gap-[8px] border border-[#24A0B5] 
-            rounded-[8px] flex-[1_0_0] items-center justify-center   '>
-             
-              <button className='flex flex-[1_0_0] font-400 font-[16px] font-[JejuMyeongjo] text-[#24A0B5]
-              rounded-[8px] py-[12px] px-[24px] items-center justify-center gap-[8px] border border-[#24A0B5] '> 
-                 <Link to='/multistepform'> Back </Link></button>
-                
-              
-               
-           <button onClick={handleSubmit} 
-           className='flex flex-[1_0_0] text-[16px] font-normal
-            text-[#fff] font-[JejuMyeongjo] bg-[#24a0b5] rounded-[8px] py-[12px] px-[24px] items-center justify-center gap-[8px] border border-[#24A0B5] '>  Get My Free Ticket  </button>  
-            
-            </div> */}
-
-            
+                    
           {/* button ends here */}
 
 </div>
