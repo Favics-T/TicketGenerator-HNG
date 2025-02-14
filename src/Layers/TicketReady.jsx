@@ -1,19 +1,20 @@
- 
-import { useContext, useRef } from "react";
-import { useNavigate } from "react-router-dom"
-import html2canvas from "html2canvas"
-import FormContext from "../Context/FormContext";
+import React, { useContext,useRef } from 'react'
+import Frame from '../assets/Image/ready_bg.png';
+import { Link, useNavigate } from 'react-router-dom';
+import FormContext from '../Context/FormContext'
+import barCode from '../assets/Image/qr-code.png'
+import html2canvas from 'html2canvas';
 
+const TicketReady = () => {
 
-const ready = () => {
-    const navigate = useNavigate();
-    const ticketRef = useRef(null);
-    const{formData}=useContext(FormContext)
+  const{formData} = useContext(FormContext);
+  const ticketRef = useRef(null);
+  const navigate = useNavigate();
 
-    const ticketDetails = JSON.parse(localStorage.getItem("ticketDetails"));
+  const ticketDetails = JSON.parse(localStorage.getItem("ticketDetails"));
   const attendeeDetails = JSON.parse(localStorage.getItem("attendeeDetails"));
 
-   const downloadTicket = () => {
+  const downloadTicket =  () => {
     if (!ticketRef.current) return;
 
     setTimeout(() => {
@@ -29,96 +30,179 @@ const ready = () => {
       link.click();
     });
   }, 3000);  //Waits 3 second for images to load
-  }
+  } 
+
+
+
 
   return (
+    <div className='flex justify-center text-white'>
+      <div classname='bg-[#041e23] flex justify-center items-center '>
+    <div className='flex flex-col   md:w-[700px] w-[375px] border border-[#0e464f]  
+    md:m-[48px] m-[64px 20px] py-[24px] md:py-[48px] px-[24px] md:p-[24px] rounded-[40px] items-center md:justify-center md:gap-[32px] gap-[48px]  '>
+
+{/* Header Starts Here */}
+<div className=' flex flex-col gap-[12px] justify-end items-start
+self-stretch'>
+ 
+  {/* header message starts here */}
+<div className='flex flex-col text-[#fff] font-[Roboto] md:flex-row gap-[12px]'>
+  
+  <h1 className='w-[531px] self-stretch font-[JejuMyeongjo]
+  text-[24px] md:text-[32px]   '>Ticket Selection</h1>
+  <p className='text-[16px] leading-[24px] text-[fafafa]'>Step 1/3</p>
+
+  
+</div>
+{/* header message ends here */}
+
+
+{/* progress bar starts here */}
+<div className='flex w-[287px] md:w-[604px] bg-[#0E464F] h-[4px] self-stretch rounded-[5px]'>
+  <div className='bg-[#24A0B5] w-[232px] md:w-[325px]'></div>
+  <div></div>
+</div>
+{/* progress bar ends here */}
+</div>
+{/* Header Ends Here */}
+
+{/* Body Start here */}
+<div className='p-[24px] grid place-items-center gap-[32px] '>
+
+   {/* Your Ticket is Booked & co starts here  */}
+   <div className='text-[#fafafa] font-Inter flex flex-col  text-center justify-center items-center'>
+    <h1 className='text-[40px] font-Inter'>Your Ticket is Booked!</h1>
+    <p className=''>Check Your email for a copy or you can <span className='font-extrabold'>download</span> </p>
+   </div>
+   {/* Your Ticket is Booked & co ends here  */}
+
+{/* Ticket Frame Starts Here */}
+<div className='relative w-full' ref={ticketRef}>
+<div className='' >
+<img src={Frame} alt="" />
+</div>
+{/* Frame div ends here */}
+
+<div className='mt-2'>
+ 
+{/* Text div starts here */}
+<div className='border h-[450px] w-[280px]   absolute bottom-[140px] left-[2%]  p-[40px] rounded-[24px] border-[#0e464f] '>
+{/* title and location starts here */}
     <div>
-        
-        <div className="border-[#0e464f] max-w-screen-sm  mt-7 p-7 m-auto border-2 rounded-3xl">
-        <div className="border-b-2 border-[#0e464f] md:flex justify-between items-center w-full pb-3 relative">
-          <h1 className="h1_line text-white text-2xl">Ready</h1>
-          <p className="p_line text-gray-300 text-lg">step 3 / 3</p>
-          <span className="absolute w-10/12 md:w-1/3"></span>
-        </div>
-
-        <div className='text-center mt-5'>
-            <h2 className='text-white font-bold text-3xl'>Your Ticket is Booked!</h2>
-            <p className='text-gray-300 font-semibold mt-5'>Check your email for a copy or you can download</p>
-        </div>
-
-            {/* Ticket Section (To be captured) */}
-        <div className='relative mt-10' ref={ticketRef}>  
-            <img src='' alt="" className='m-auto' />
-            <div className='w-[45%] h-[73%] border-[#24a0b5] border absolute top-6 md:left-40 rounded-xl'>
-            <h1 className="font-RoadRage text-3xl text-white absolute top-3 left-11">
-              Techember Fest "25
-            </h1>
-            <p className='absolute top-11 text-gray-300 text-sm left-6'>📍 04 Runners road, Ikoyi, Lagos.</p>
-            <p className='absolute top-16 text-gray-300 text-sm left-9'>📆 March 15,2025 | 7:00pm</p>
-            
-            {/* Handles imnage uplaoad */}
-            <img src={formData.avatar} alt="Avatar" crossOrigin="anonymous"  className='img_upload w-1/2 h-1/4 border-4 rounded-2xl absolute top-28 left-16' />
-
-            <div className='ticket_req w-11/12 border absolute top-60 left-3 p-1 rounded-xl'>
-                <div className='mb_input flex gap-1 border-b-2'>
-                    <div  className='mb_input w-1/2 border-r-2 overflow-x-auto whitespace-nowrap scrollabar-hide'>
-                        <p className='text-sm text-gray-400 pr-'>Enter your name</p>
-                        <p className="text-white text-sm mt-2 inline-flex">{formData.name}</p>
-                    </div>
-
-                    <div className='mb_input w-1/2 overflow-x-auto whitespace-nowrap scrollabar-hide'>
-                        <p className='text-sm text-gray-400 pl-1' >Enter your email*</p>
-                        <p className="text-gray-300 text-s mt-2 inline-flex">{formData.email}</p>
-                    </div>
-                </div>
-
-                <div className='mb_input flex gap-1 border-b-2'>
-                    <div  className='mb_input w-1/2 border-r-2'>
-                        <p className='text-sm text-gray-400'>Ticket Type:</p>
-                        <p className="text-white text-sm mt-2" >{ticketDetails?.type}</p>
-                    </div>
-
-                    <div className='mb_input w-1/2 '>
-                        <label className='text-sm text-gray-400 pl-1' >Ticket For:</label>
-                        <p className="text-gray-300 text-sm mt-2 ">{ticketDetails?.quantity}</p>
-                    </div>
-                </div>
-
-                {/* Display Textarea Input */}
-          <div className="mt-2">
-            <p className="text-gray-400 text-sm">Special Request?</p>
-            <p className="text-gray-300 text-sm pt-1 rounded-md">{attendeeDetails?.textArea}</p>
-          </div>
-            </div>
-
-                
-            </div>
-            {/* QR Code */}
-            <div id="qrCode" className="absolute bottom-5 left-10 md:left-44">
-                    <img src="" alt="QR Code" crossOrigin="anonymous" />
-                </div>
-        </div>
-
-          {/* handles buttons */}
-          <div className="btn_2 justify-between gap-5 mt-5">
-            <button
-              onClick={() => navigate("/")}
-              className="btn_1 md:w-1/2 border-2 p-3 text-xl rounded-xl"
-            >
-              Book Another Ticket
-            </button>
-            <button
-              type="button"
-              onClick={downloadTicket}
-              className="border-[#24a0b5] text-[#24a0b5] hover:bg-[#24a0b5] hover:text-white md:w-1/2 border-2 p-3 text-xl rounded-xl"
-            >
-              Download Ticket
-            </button>
-          </div>
-        </div>
       
+    </div>
+    <div>
+    <h1 className='md:text-[32px]  text-center text-[20px] text-[#fafafa] font-RoadRage '>TECHEMBER FEST "25</h1>
+    <p>📍 04 Rumens road, Ikoyi, Lagos</p>
+    <p>March 15, 2025 | 7:00 PM</p>
+    </div>
+{/* title and location ends here */}
+
+<div className='px-8 border-[#24A0B5]  border-4 rounded-2xl py-2 ' >
+<img src={formData.avatar} alt="Avatar" crossOrigin="anonymous" 
+ className=' w-1/2 h-1/4 ' />
+</div>
+
+<div className='border-2 gap-4 text-white text-[10px] rounded-[24px] px-4 mt-4 py-4 flex flex-col'>
+{/* User details starts here */}
+<div className='flex gap-4'>
+  {/* first div starts here */}
+  <div>
+
+  </div>
+  {/* first div ends here */}
+<div className='flex flex-col gap-4 '>
+    <div className=''>
+    <h1>Enter Your Name</h1>
+    <h1>{formData.name} </h1>
+    </div>
+
+    <div>
+      <h1>Ticket Type</h1>
+      <h1>VIP</h1>
+    </div>
+    </div>
+  {/* second div starts here */}
+    <div>
+
+    <div className='flex flex-col gap-4'>
+    <div className='border-b'>
+    <h1>Enter Your Email</h1>
+    <h1>{formData.email} </h1>
+    </div>
+
+    <div>
+      <h1>Ticket for:</h1>
+      <h1>1</h1>
+    </div>
+    
+  </div>
+    </div>
+  {/* second div ends here */}
+
+
+</div>
+{/* User detaails ends here */}
+
+{/* Paragraph starts here */}
+<div>
+<div>
+    <p>Special request?</p>
+    <p>{formData.textArea}</p>
+  </div>
+</div>
+{/* Paragraph ends here */}
+</div>
+
+
+
+</div>
+{/* Text Div ends Here */}
+
+</div>
+<div className='absolute bottom-6 left-8'> <img src={barCode} alt="" /> </div>
+
+
+
+
+
+</div>
+{/* frame div starts here */}
+
+
+{/* Ticket Frame Ends Here */}
+
+   
+
+  {/* buttons start here */}
+   <div className='flex gap-[8px] rounded-[8px]  items-center    '>
+              
+               <button className='flex  font-400 font-[16px] font-[JejuMyeongjo] text-[#24A0B5]
+               rounded-[8px] py-[12px] px-[24px] items-center justify-center gap-[8px] border border-[#24A0B5] '> 
+                  <Link to='/multistepform'> Book Another Ticket </Link></button>
+                 
+               
+                
+            <button 
+            className='flex flex-[1_0_0] text-[16px] font-normal
+             text-[#fff] font-[JejuMyeongjo] bg-[#24a0b5] rounded-[8px] py-[12px] px-[24px] items-center justify-center gap-[8px] border border-[#24A0B5]'
+             onClick={downloadTicket}>  Download Ticket  </button>  
+             
+             </div>
+  {/* button ends here */}
+
+</div>
+{/* Body Ends here */}
+    </div>
+    
+   </div>
+  
+
+
+
+
     </div>
   )
 }
 
-export default ready
+export default TicketReady
