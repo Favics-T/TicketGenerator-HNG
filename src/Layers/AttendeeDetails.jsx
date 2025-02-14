@@ -64,27 +64,13 @@ const AttendeeDetails = () => {
     <div className='bg-[#02191D] text-[#ffff] h-auto flex justify-center '>
      
 <div className='bg-[#041e23] border md:p-[48px] p-[32px 24px] justify-center items-center  my-[112px] border-[#0e464f]
-gap-[32px] md:w-[700px] w-[350px] self-stretch   flex flex-col  rounded-[24px]  '>
+gap-[32px]  md:w-[700px] w-[375px]  self-stretch   flex flex-col  rounded-[24px]  '>
 
 {/* Header Starts Here */}
 <div>
-  {/* 
-  display: flex;
-flex-direction: column;
-align-items: flex-start;
-gap: 12px;
-align-self: stretch;
-
-desktop
-
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-gap: 12px;
-align-self: stretch;
-  */}
-<div className='flex md:gap-[300px] gap-[10px] text-white'>
-    <h1 className='text-[#fff] font-[JejuMyeongjo] self-stretch text-[32px] font-normal '>Attendee Details</h1>
+ 
+<div className='flex flex-col md:gap-[300px] md:flex-row  text-white'>
+    <h1 className='text-[#fff] font-[JejuMyeongjo] self-stretch text-[24px] md:text-[32px]font-normal '>Attendee Details</h1>
     <p className='font-[Roboto] mt-4 text-[16px] font-normal  '>
       Step 2/3</p>
 </div>
@@ -104,14 +90,14 @@ align-self: stretch;
 
 {/* multi step form starts here */}
 
-<div className='border md:w-full w-[300px] border-[#0E464F] rounded-[32px] flex 
+<div className='border md:w-full w-[375px] border-[#0E464F] rounded-[32px] flex 
 p-[24px] flex-col justify-center items-star gap-[32px] self-stretch '>
 
 
 {/* Component instance starts here */}
 
  {/*form starts here  */}
- <form action="" onSubmit={handleSubmit} className='text-white gap- '>
+ <form action="" onSubmit={handleSubmit} className='text-white flex flex-col px-2  gap-[8px] '>
 
 
 
@@ -191,7 +177,25 @@ p-[24px] flex-col justify-center items-star gap-[32px] self-stretch '>
           {/* form ends here */}
 
           {/* button starts here */}
-            <div className='flex gap-[8px] border border-[#24A0B5] 
+
+        <div className='flex gap-[8px] border px-8 border-[#24A0B5] 
+                     rounded-[8px] flex-[1_0_0] items-center justify-center   '>
+                      
+                       <button className='flex flex-[1_0_0] font-400 font-[16px] font-[JejuMyeongjo] text-[#24A0B5]
+                       rounded-[8px] py-[12px] px-[24px] items-center justify-center gap-[8px] border border-[#24A0B5] '> 
+                          <Link to='/multistepform'> Back </Link></button>
+                         
+                       
+                        
+                    <button 
+                    className='flex md:flex-[1_0_0] text-[16px] font-normal
+                     text-[#fff] font-[JejuMyeongjo] bg-[#24a0b5] rounded-[8px] py-[12px] px-[24px] items-center justify-center gap-[8px] border border-[#24A0B5] '
+                     onClick={handleSubmit}> Get My Ticket  </button>  
+                     
+                     </div>
+
+
+            {/* <div className='flex gap-[8px] border border-[#24A0B5] 
             rounded-[8px] flex-[1_0_0] items-center justify-center   '>
              
               <button className='flex flex-[1_0_0] font-400 font-[16px] font-[JejuMyeongjo] text-[#24A0B5]
@@ -204,7 +208,7 @@ p-[24px] flex-col justify-center items-star gap-[32px] self-stretch '>
            className='flex flex-[1_0_0] text-[16px] font-normal
             text-[#fff] font-[JejuMyeongjo] bg-[#24a0b5] rounded-[8px] py-[12px] px-[24px] items-center justify-center gap-[8px] border border-[#24A0B5] '>  Get My Free Ticket  </button>  
             
-            </div>
+            </div> */}
 
             
           {/* button ends here */}
