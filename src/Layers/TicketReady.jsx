@@ -115,7 +115,7 @@ self-stretch'>
     </div>
 {/* title and location ends here */}
 <div
-className='px-8 border-[#19cae9] bg-[#198699]  border-4 rounded-2xl py-1 ' >
+className='px-8 h-1/4 border-[#19cae9] bg-[#198699]  border-4 rounded-2xl py-1 ' >
 <img src={formData.avatar} alt="Avatar" crossOrigin="anonymous" 
  className=' rounded-lg ' />
 </div>
@@ -191,9 +191,10 @@ className='px-8 border-[#19cae9] bg-[#198699]  border-4 rounded-2xl py-1 ' >
    <div className='flex gap-[8px] rounded-[8px]  items-center    '>
               
                <button className='flex  font-400 font-[16px] font-[JejuMyeongjo] text-[#24A0B5]
-               rounded-[8px] py-[12px] px-[24px] items-center justify-center gap-[8px] border border-[#24A0B5] '> 
-                  <Link to='/selectticket
-                  '> Book Another Ticket </Link></button>
+               rounded-[8px] py-[12px] px-[24px] items-center justify-center gap-[8px] border border-[#24A0B5] '
+                onClick={() => navigate("/")}> 
+                  
+                   Book Another Ticket </button>
                             
                 
             <button 
