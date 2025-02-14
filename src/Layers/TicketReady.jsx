@@ -11,7 +11,19 @@ const TicketReady = () => {
   const ticketRef = useRef(null);
   const navigate = useNavigate();
 
-  
+  const handleTicketDownload = () => {
+    if (ticketRef.current && imagesLoaded) {
+      html2canvas(ticketRef.current, {
+        scale: 2,
+        useCORS: true,
+      }).then((canvas) => {
+        const link = document.createElement("a");
+        link.href = canvas.toDataURL("image/png");
+        link.download = `${formData.fullName}_ticket.png`;
+        link.click();
+      });
+    }
+  };
   
 
   return (
@@ -161,7 +173,7 @@ className='px-8 flex justify-center py-1  md:h-[115px] h-[90px] border-[#19cae9]
             <button 
             className='flex cursor-pointer flex-[1_0_0] text-[16px] font-normal
              text-[#fff] font-[JejuMyeongjo] bg-[#24a0b5] rounded-[8px] py-[12px] px-[24px] items-center justify-center gap-[8px] border border-[#24A0B5]'
-             >  Download Ticket  </button>  
+             onClick={handleTicketDownload}>  Download Ticket  </button>  
              
              </div>
   {/* button ends here */}
