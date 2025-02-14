@@ -20,8 +20,8 @@ const TicketReady = () => {
     setTimeout(() => {
     html2canvas(ticketRef.current, { 
       scale: 2,
-      useCORS: true, // Allows loading external images
-      allowTaint: true, //  Prevents cross-origin issues
+      useCORS: true, 
+      allowTaint: true, 
 
      }).then((canvas) => {
       const link = document.createElement("a");
@@ -29,7 +29,7 @@ const TicketReady = () => {
       link.download = "Techember_Ticket.png";
       link.click();
     });
-  }, 3000);  //Waits 3 second for images to load
+  }, 3000);  
   } 
 
 
@@ -49,7 +49,7 @@ self-stretch'>
 <div className='flex flex-col text-[#fff] font-[Roboto] md:flex-row gap-[12px]'>
   
   <h1 className='w-[531px] self-stretch font-[JejuMyeongjo]
-  text-[24px] md:text-[32px]   '>Ticket Selection</h1>
+  text-[24px] md:text-[32px]'>Ready</h1>
   <p className='text-[16px] leading-[24px] text-[fafafa]'>Step 1/3</p>
 
   
@@ -179,9 +179,9 @@ self-stretch'>
               
                <button className='flex  font-400 font-[16px] font-[JejuMyeongjo] text-[#24A0B5]
                rounded-[8px] py-[12px] px-[24px] items-center justify-center gap-[8px] border border-[#24A0B5] '> 
-                  <Link to='/multistepform'> Book Another Ticket </Link></button>
-                 
-               
+                  <Link to='/selectticket
+                  '> Book Another Ticket </Link></button>
+                            
                 
             <button 
             className='flex flex-[1_0_0] text-[16px] font-normal

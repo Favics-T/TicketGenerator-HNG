@@ -8,6 +8,15 @@ const SelectTicket= () => {
     quantity:1
   })
 
+  const ticketList =[
+    { type: "Free", price: "Free", access: "REGULAR ACCESS" },
+    { type: "VIP", price: "$150", access: "VIP ACCESS" },
+    { type: "VVIP", price: "$300", access: "VVIP ACCESS" }
+    ];
+
+  
+
+  
 
 
 useEffect(() => {
@@ -26,12 +35,15 @@ const handleSelectTicket = (type)=>{
   return (
    <div classname='bg-[#041e23]'>
     <div className='flex flex-col md:w-[700px] w-[375px] border border-[#0e464f]  
-    md:m-[48px] m-[64px 20px] py-[24px] md:py-[48px] px-[24px] md:p-[24px] rounded-[40px] items-center md:justify-center md:gap-[32px] gap-[48px]  '>
+    md:m-[48px] m-[64px 20px] py-[24px] md:py-[48px] px-[24px] md:p-[24px] 
+    rounded-[40px] items-center md:justify-center md:gap-[32px] gap-[48px]  '>
 
 {/* Header Starts Here */}
 <div className=' flex flex-col gap-[12px] justify-end items-start
 self-stretch'>
- 
+ <div>
+  
+ </div>
   {/* header message starts here */}
 <div className='flex flex-col text-[#fff] font-[Roboto] md:flex-row gap-[12px]'>
   
@@ -92,13 +104,11 @@ rounded-[32px] bg-[#08252b]'>
 
   {/* Ticket Type Starts here */}
   <div>
-    <h1>Select Ticket Type</h1>
-  <div className="accessContainer  border-[#0E464F] max-w-screen-sm mt-7 p-5 border-2 rounded-3xl md:flex justify-around gap-2">
-              {[
-                { type: "Free", price: "Free", access: "REGULAR ACCESS" },
-                { type: "VIP", price: "$150", access: "VIP ACCESS" },
-                { type: "VVIP", price: "$300", access: "VVIP ACCESS" },
-              ].map(({ type, price, access }) => (
+    <h1 className='text-white font-Roboto'>Select Ticket Type</h1>
+  <div className="  border-[#0E464F] max-w-screen-sm mt-7 p-5 border-2 rounded-3xl md:flex justify-around gap-2">
+              {
+              
+              ticketList.map(({ type, price, access }) => (
                 <button
                   key={type}
                   className={`border-[#197686] px-4 py-3 border-2 rounded-xl cursor-pointer w-full mt-3 ${

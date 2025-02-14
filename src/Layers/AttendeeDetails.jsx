@@ -63,7 +63,9 @@ const AttendeeDetails = () => {
     
     <div className='bg-[#02191D] text-[#ffff] h-auto flex justify-center '>
      
-<div className='bg-[#041e23] border md:p-[48px] p-[32px 24px] justify-center items-center  my-[112px] border-[#0e464f]
+<div className='bg-[#041e23] border 
+md:m-[48px] m-[64px 20px] py-[24px] md:py-[48px] px-[24px] md:p-[24px] 
+md:p-[48px] p-[32px 24px] justify-center items-center   my-[112px] border-[#0e464f]
 gap-[32px]  md:w-[700px] w-[375px]  self-stretch   flex flex-col  rounded-[24px]  '>
 
 {/* Header Starts Here */}
@@ -150,7 +152,7 @@ p-[24px] flex-col justify-center items-star gap-[32px] self-stretch '>
 {/* component instance ends here */}
 
 {/* progress bar starts here */}
-<div className='h-[4px] self-stretch bg-[#07373F]  '></div>
+<div className='h-[4px] self-stretch bg-[#07373F] my-8  '></div>
 {/* progress bar ends here */}
 
 
@@ -178,8 +180,8 @@ p-[24px] flex-col justify-center items-star gap-[32px] self-stretch '>
 
           {/* button starts here */}
 
-        <div className='flex gap-[8px] border px-8 border-[#24A0B5] 
-                     rounded-[8px] flex-[1_0_0] items-center justify-center   '>
+        <div className='flex gap-[8px] border px-10 border-[#24A0B5] 
+                     rounded-[20px] flex-[1_0_0] items-center justify-center   '>
                       
                        <button className='flex flex-[1_0_0] font-400 font-[16px] font-[JejuMyeongjo] text-[#24A0B5]
                        rounded-[8px] py-[12px] px-[24px] items-center justify-center gap-[8px] border border-[#24A0B5] '> 

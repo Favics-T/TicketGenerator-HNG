@@ -5,8 +5,7 @@ import AttendeeDetails from './Layers/AttendeeDetails';
 import TicketReady from './Layers/TicketReady';
 import SelectTicket from './Layers/SelectTicket';
 import Header from './Components/Header';
-import Attend from './Layers/Attend';
- 
+
 const Layout = ()=>{
   return (
     <div>
@@ -27,7 +26,7 @@ const App = () => {
           <Route path="attendeedetails" element={<AttendeeDetails />} />
           <Route path="ticketready" element={<TicketReady />} />
           <Route path="selectticket" element={<SelectTicket />} />
-          <Route path='attend' element={<Attend />}/>
+          
         </Route>
       </Routes>
     </Router>
