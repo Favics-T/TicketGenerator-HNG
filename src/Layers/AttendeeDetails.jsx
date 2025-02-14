@@ -62,21 +62,28 @@ const AttendeeDetails = () => {
   return (
     
     <div className='bg-[#02191D] text-[#ffff] h-auto flex justify-center '>
-      {/* 
-      
-padding: 64px 20px;
-flex-direction: column;
-align-items: center;
-gap: 48px;
-align-self: stretch;
-
-      */}
-<div className='bg-[#041e23] border p-[48px] justify-center items-center  my-[112px] border-[#0e464f]
-gap-[32px] md:w-[700px] w-[350px]  flex flex-col  rounded-[24px]  '>
+     
+<div className='bg-[#041e23] border md:p-[48px] p-[32px 24px] justify-center items-center  my-[112px] border-[#0e464f]
+gap-[32px] md:w-[700px] w-[350px] self-stretch   flex flex-col  rounded-[24px]  '>
 
 {/* Header Starts Here */}
 <div>
-<div className='flex gap-[300px] text-white'>
+  {/* 
+  display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 12px;
+align-self: stretch;
+
+desktop
+
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+gap: 12px;
+align-self: stretch;
+  */}
+<div className='flex md:gap-[300px] gap-[10px] text-white'>
     <h1 className='text-[#fff] font-[JejuMyeongjo] self-stretch text-[32px] font-normal '>Attendee Details</h1>
     <p className='font-[Roboto] mt-4 text-[16px] font-normal  '>
       Step 2/3</p>
