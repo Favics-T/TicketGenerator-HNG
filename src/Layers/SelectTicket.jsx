@@ -14,20 +14,6 @@ const SelectTicket= () => {
  
 
 
-
-// useEffect(() => {
-//   const savedData = JSON.parse(localStorage.getItem("ticketDetails"));
-//   if (savedData) setTicket(savedData);
-// }, []);
-
-// useEffect(() => {
-//   localStorage.setItem("ticketDetails", JSON.stringify(ticket));
-// }, [ticket]);
-
-// const handleSelectTicket = (type)=>{
-//   setTicket({...ticket,type})
-// };
-
   return (
    <div classname='bg-[#041e23]'>
     <div className='flex flex-col md:w-[700px] w-[375px] border border-[#0e464f]  
@@ -55,7 +41,7 @@ self-stretch'>
 {/* progress bar starts here */}
 <div className='flex w-[287px] md:w-[604px] bg-[#0E464F] h-[4px] self-stretch rounded-[5px]'>
   <div className='bg-[#24A0B5] w-[232px] md:w-[325px]'></div>
-  <div></div>
+  
 </div>
 {/* progress bar ends here */}
 </div>
@@ -123,7 +109,7 @@ rounded-[32px] bg-[#08252b]'>
                   key={type}
                   className={`border-[#197686] px-4 py-3 border-2 rounded-xl cursor-pointer w-full mt-3 
                     ${
-                    ticket.type === type ? "border border-4" : ""
+                    ticket.type === type ? " border-4" : ""
                   }`}
                   onClick={() => handleSelectTicket(type)}
                 >

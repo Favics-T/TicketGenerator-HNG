@@ -65,7 +65,7 @@ const AttendeeDetails = () => {
      
 <div className='bg-[#041e23] border 
 md:m-[48px] m-[64px 20px] py-[24px] md:py-[48px] px-[24px] md:p-[24px] 
-md:p-[48px] p-[32px 24px] justify-center items-center   my-[112px] border-[#0e464f]
+ p-[32px 24px] justify-center items-center   my-[112px] border-[#0e464f]
 gap-[32px]  md:w-[700px] w-[375px]  self-stretch   flex flex-col  rounded-[24px]  '>
 
 {/* Header Starts Here */}
@@ -112,8 +112,11 @@ p-[24px] flex-col justify-center items-star gap-[32px] self-stretch '>
 
 >
   <div className='flex flex-col justify-center bg-[#0E464F] border border-[#0e464f] rounded-[32px] gap-[16px]  items-center w-[240px] h-[240px] p-[24px]  '>
-{formData.avatar ?(<div>{<p
-      className='text-center break-all w-full text-ellipsis px-2 '>{formData.avatar}</p>}</div>)
+{formData.avatar ?(<div>{
+  <img src={formData.avatar} alt="" />
+  
+      
+      }</div>)
       :
       (<div>
         

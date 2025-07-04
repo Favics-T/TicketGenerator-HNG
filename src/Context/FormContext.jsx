@@ -3,6 +3,16 @@ import { createContext, useState, useCallback,useEffect } from "react";
 const FormContext = createContext();
 
 export const FormProvider = ({ children }) => {
+ const[ticket, setTicket] =useState({
+    type:"Free",
+    quantity:1
+  })
+
+   const handleSelectTicket = (type)=>{
+    setTicket({...ticket,type})
+  };
+ 
+  console.log(ticket);
 
   //form
   const [formData, setFormData] = useState({
@@ -22,16 +32,6 @@ export const FormProvider = ({ children }) => {
     { type: "VVIP", price: "$300", access: "VVIP ACCESS" }
     ];
 
-
-  const[ticket, setTicket] =useState({
-    type:"",
-    quantity:1
-  })
-
-  const handleSelectTicket = (type)=>{
-    setTicket({...ticket,type})
-  };
-
   useEffect(() => {
     const savedData = 
     JSON.parse(localStorage.getItem("ticketDetails"));
@@ -42,13 +42,6 @@ export const FormProvider = ({ children }) => {
     localStorage.setItem("ticketDetails", 
       JSON.stringify(ticket));
   }, [ticket]);
-
-
-
-
-
-
-
 
 
   const[uploading,setUploading] = useState(false);

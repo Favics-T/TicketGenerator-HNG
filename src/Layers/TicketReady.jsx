@@ -7,7 +7,9 @@ import html2canvas from 'html2canvas';
 
 const TicketReady = () => {
 
-  const{formData} = useContext(FormContext);
+  const{formData,ticket} = useContext(FormContext);
+console.log(ticket)
+
   const ticketRef = useRef(null);
   const navigate = useNavigate();
 
@@ -119,12 +121,12 @@ className='px-8 flex justify-center py-1  md:h-[115px] h-[90px] border-[#19cae9]
   <div className='flex border-t px-1 border-[#145d68]'>
     <div className='w-1/2 border-r  border-[#145d68]'>
       <p className='text-gray-500'>Ticket Type</p>
-      <p>VIP</p>
+      <p> {ticket.type} </p>
           </div>
 
     <div className='flex-col flex gap-1 px-1'>
       <p className='text-gray-500 '>Ticket Number</p>
-      <p>1</p>
+      <p>{ticket.quantity} </p>
     </div>
   </div>
   {/* ticket type ends here */}
