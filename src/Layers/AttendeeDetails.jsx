@@ -185,7 +185,7 @@ p-[24px] flex-col justify-center items-star gap-[32px] self-stretch '>
                       
                        <button className='flex flex-[1_0_0] font-400 font-[16px] font-[JejuMyeongjo] text-[#24A0B5]
                        rounded-[8px] py-[12px] px-[24px] items-center justify-center gap-[8px] border border-[#24A0B5] '> 
-                          <Link to='/'> Back </Link></button>
+                          <Link to='/home'> Back </Link></button>
                          
                        
                         
