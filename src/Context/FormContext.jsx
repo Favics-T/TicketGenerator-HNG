@@ -1,15 +1,60 @@
-import { createContext, useState, useCallback } from "react";
+import { createContext, useState, useCallback,useEffect } from "react";
 
 const FormContext = createContext();
 
 export const FormProvider = ({ children }) => {
+
+  //form
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     about: "",
     avatar: "",
     textArea: "",
+    ticket:"",
   });
+
+  // Ticket
+
+  const ticketList =[
+    { type: "Free", price: "Free", access: "REGULAR ACCESS" },
+    { type: "VIP", price: "$150", access: "VIP ACCESS" },
+    { type: "VVIP", price: "$300", access: "VVIP ACCESS" }
+    ];
+
+
+  const[ticket, setTicket] =useState({
+    type:"",
+    quantity:1
+  })
+
+  const handleSelectTicket = (type)=>{
+    setTicket({...ticket,type})
+  };
+
+  useEffect(() => {
+    const savedData = 
+    JSON.parse(localStorage.getItem("ticketDetails"));
+    if (savedData) setTicket(savedData);
+  }, []);
+  
+  useEffect(() => {
+    localStorage.setItem("ticketDetails", 
+      JSON.stringify(ticket));
+  }, [ticket]);
+
+
+
+
+
+
+
+
+
+  const[uploading,setUploading] = useState(false);
+
+    
+
 
   // Handle image drag & drop
   const handlePictureUpload = useCallback((e) => {
@@ -21,6 +66,14 @@ export const FormProvider = ({ children }) => {
   // Upload image to Cloudinary
   const uploadImage = useCallback(async (file) => {
     if (!file) return;
+
+    //ensuring i am accepting an image
+    if(!file.type.startsWith("image/")){
+      alert("please upload a valid image file")
+      return;
+    }
+
+    setUploading(true);
 
     const data = new FormData();
     data.append("file", file);
@@ -48,7 +101,8 @@ export const FormProvider = ({ children }) => {
       } else {
         alert("Image upload failed. Please try again.");
       }
-    } catch (error) {
+    } 
+    catch (error) {
       console.error("File upload error:", error);
       alert("Failed to upload image. Try again!");
     }
@@ -61,6 +115,10 @@ export const FormProvider = ({ children }) => {
         setFormData,
         handlePictureUpload,
         uploadImage,
+        ticketList,
+        ticket,
+        setTicket,
+        handleSelectTicket,
       }}
     >
       {children}

@@ -2,6 +2,7 @@ import React from 'react'
 import Hug from '../assets/Image/Hug'
 import Tic from '../assets/Image/Tic'
 import { MdArrowRightAlt } from "react-icons/md";
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -34,7 +35,10 @@ const Header = () => {
         {/* My ticket starts here */}
         <div className=' flex py-[12px] px-[16px] md:py-[16px] md:px-[24px] border-[rgba(213,234,0,0.10)] justify-center items-center gap-[8px] rounded-[8px] border bg-[#fff]'>
          
-    <h1 className='text-[#0a0c11] font-[JejuMyeongjo] md:text-[16px] text-[14px] uppercase leading-[20px]  '>My Ticket</h1>
+         <Link>
+         <h1 className='text-[#0a0c11] font-[JejuMyeongjo] md:text-[16px] text-[14px] uppercase leading-[20px] cursor-pointer  '>My Ticket</h1>
+         </Link>
+    
     <MdArrowRightAlt />
         </div>
         {/* MY Ticket ends here */}

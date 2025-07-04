@@ -1,36 +1,32 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom';
 import { FaMapPin } from "react-icons/fa";
+import FormContext from '../Context/FormContext';
 
 const SelectTicket= () => {
-  const[ticket, setTicket] =useState({
-    type:"",
-    quantity:1
-  })
+  // const[ticket, setTicket] =useState({
+  //   type:"",
+  //   quantity:1
+  // })
 
-  const ticketList =[
-    { type: "Free", price: "Free", access: "REGULAR ACCESS" },
-    { type: "VIP", price: "$150", access: "VIP ACCESS" },
-    { type: "VVIP", price: "$300", access: "VVIP ACCESS" }
-    ];
+  const {ticketList, ticket,setTicket,handleSelectTicket} = useContext(FormContext)
 
-  
-
-  
+ 
 
 
-useEffect(() => {
-  const savedData = JSON.parse(localStorage.getItem("ticketDetails"));
-  if (savedData) setTicket(savedData);
-}, []);
 
-useEffect(() => {
-  localStorage.setItem("ticketDetails", JSON.stringify(ticket));
-}, [ticket]);
+// useEffect(() => {
+//   const savedData = JSON.parse(localStorage.getItem("ticketDetails"));
+//   if (savedData) setTicket(savedData);
+// }, []);
 
-const handleSelectTicket = (type)=>{
-  setTicket({...ticket,type})
-};
+// useEffect(() => {
+//   localStorage.setItem("ticketDetails", JSON.stringify(ticket));
+// }, [ticket]);
+
+// const handleSelectTicket = (type)=>{
+//   setTicket({...ticket,type})
+// };
 
   return (
    <div classname='bg-[#041e23]'>
@@ -48,10 +44,10 @@ self-stretch'>
 <div className='flex flex-col text-[#fff] font-[Roboto] md:flex-row gap-[12px]'>
   
   <h1 className='w-[531px] self-stretch font-[JejuMyeongjo]
-  text-[24px] md:text-[32px]   '>Ticket Selection</h1>
-  <p className='text-[16px] leading-[24px] text-[fafafa]'>Step 1/3</p>
-
-  
+  text-[24px] md:text-[32px]'>
+    Ticket Selection</h1>
+  <p className='text-[16px] leading-[24px] text-[fafafa]'>
+    Step 1/3</p>
 </div>
 {/* header message ends here */}
 
@@ -71,15 +67,25 @@ rounded-[32px] bg-[#08252b]'>
 
     {/* section title starts here */}
     
-  <div className='flex flex-col py-[16px] px-[24px] sm:justify-between md:p-[24px] md:h-[220px] h-[243px] items-center gap-[8px] self-stretch rounded-[24px] border-r-2 border-r-[#07373f] border-b-2
-  border-[#07373f] border-l-2 border-l-[#07373f] bg-[radial-gradient(57.42%_106.59%_at_14.02%_32.06%,rgba(36,160,181,0.20)_0%,rgba(36,160,181,0.00)_100%),rgba(10,12,17,0.10)] backdrop-blur-[7px]'>
+  <div className='flex flex-col py-[16px] px-[24px] sm:justify-between md:p-[24px] 
+  md:h-[220px] h-[243px] items-center gap-[8px] self-stretch rounded-[24px] border-r-2
+   border-r-[#07373f] border-b-2
+  border-[#07373f] border-l-2 border-l-[#07373f]
+   bg-[radial-gradient(57.42%_106.59%_at_14.02%_32.06%,rgba(36,160,181,0.20)_0%,rgba(36,160,181,0.00)_100%),rgba(10,12,17,0.10)] 
+   backdrop-blur-[7px]'>
 
 {/* Title starts here */}
-<h1 className='font-RoadRage  self-stretch text-center text-[#fafafa] md:text-[62px] text-[40px] heading-[48px]  md:heading-[62px] font-normal'>Techember Fest "25</h1>
+<h1 className='font-RoadRage  self-stretch text-center
+ text-[#fafafa] md:text-[62px] text-[40px] heading-[48px] 
+  md:heading-[62px] font-normal'>
+  Techember Fest "25
+  </h1>
 {/* Title ends here */}
 
 {/* Paragraph starts here */}
-<p className='text-center font-normal md:leading-[24px] leading-[21px] md:w-[340px] w-[239px] font-[Roboto] text-[#fafafa] md:text-[16px] text-[14px]'>Join us for an unforgettable experience at Techember! Secure Your Spot now</p>
+<p className='text-center font-normal md:leading-[24px] leading-[21px] md:w-[340px] w-[239px]
+ font-[Roboto] text-[#fafafa] md:text-[16px] text-[14px]'>
+  Join us for an unforgettable experience at Techember! Secure Your Spot now </p>
 {/* Paragraph ends here */}
 
 {/* Location Starts here */}
@@ -104,15 +110,20 @@ rounded-[32px] bg-[#08252b]'>
 
   {/* Ticket Type Starts here */}
   <div>
-    <h1 className='text-white font-Roboto'>Select Ticket Type</h1>
-  <div className="  border-[#0E464F] max-w-screen-sm mt-7 p-5 border-2 rounded-3xl md:flex justify-around gap-2">
+    <h1 
+    className='text-white font-Roboto'>
+      Select Ticket Type</h1>
+  <div 
+  className="  border-[#0E464F] max-w-screen-sm mt-7 p-5 border-2 rounded-3xl
+   md:flex justify-around gap-2">
               {
               
               ticketList.map(({ type, price, access }) => (
                 <button
                   key={type}
-                  className={`border-[#197686] px-4 py-3 border-2 rounded-xl cursor-pointer w-full mt-3 ${
-                    ticket.type === type ? "border" : ""
+                  className={`border-[#197686] px-4 py-3 border-2 rounded-xl cursor-pointer w-full mt-3 
+                    ${
+                    ticket.type === type ? "border border-4" : ""
                   }`}
                   onClick={() => handleSelectTicket(type)}
                 >
@@ -180,4 +191,3 @@ export default SelectTicket
 
 
 
-{/* may it be enya */}
