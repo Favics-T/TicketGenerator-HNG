@@ -1,3 +1,5 @@
+
+
 import React, { useState,useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom';
 import { FaMapPin } from "react-icons/fa";
@@ -121,7 +123,7 @@ rounded-[32px] bg-[#08252b]'>
   <div className="">
             <label className="text-gray-300">Number of Tickets:</label>
             <select
-              className="w-full mt-3 p-3 border-2 rounded-xl text-white bg-[#08252b] outline-none"
+              className="w-full mt-3 p-3 border-2 border-[#197686] focus:border-[#133338]  rounded-xl text-white bg-[#08252b] outline-none"
               value={ticket.quantity}
               onChange={(e) =>
                 setTicket({
