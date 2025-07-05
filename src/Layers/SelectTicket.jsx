@@ -4,18 +4,10 @@ import { FaMapPin } from "react-icons/fa";
 import FormContext from '../Context/FormContext';
 
 const SelectTicket= () => {
-  // const[ticket, setTicket] =useState({
-  //   type:"",
-  //   quantity:1
-  // })
+   const {ticketList, ticket,setTicket,handleSelectTicket} = useContext(FormContext)
 
-  const {ticketList, ticket,setTicket,handleSelectTicket} = useContext(FormContext)
-
- 
-
-
-  return (
-   <div classname='bg-[#041e23]'>
+   return (
+   <div className='bg-[#041e23]'>
     <div className='flex flex-col md:w-[700px] w-[375px] border border-[#0e464f]  
     md:m-[48px] m-[64px 20px] py-[24px] md:py-[48px] px-[24px] md:p-[24px] 
     rounded-[40px] items-center md:justify-center md:gap-[32px] gap-[48px]  '>
@@ -129,7 +121,7 @@ rounded-[32px] bg-[#08252b]'>
   <div className="">
             <label className="text-gray-300">Number of Tickets:</label>
             <select
-              className="w-full mt-3 p-3 border-2 rounded-xl text-white bg-inherit outline-none"
+              className="w-full mt-3 p-3 border-2 rounded-xl text-white bg-[#08252b] outline-none"
               value={ticket.quantity}
               onChange={(e) =>
                 setTicket({
