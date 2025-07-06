@@ -4,6 +4,7 @@ import React, { useState,useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom';
 import { FaMapPin } from "react-icons/fa";
 import FormContext from '../Context/FormContext';
+import SubHeader from '../Components/selectTicket/SubHeader';
 
 const SelectTicket= () => {
    const {ticketList, ticket,setTicket,handleSelectTicket} = useContext(FormContext)
@@ -21,14 +22,16 @@ self-stretch'>
   
  </div>
   {/* header message starts here */}
-<div className='flex flex-col text-[#fff] font-[Roboto] md:flex-row gap-[12px]'>
+{/* <div className='flex  justify-between w-full flex-col sm:flex-row text-[#fff] font-[Roboto] md:flex-row '>
   
-  <h1 className='w-[531px] self-stretch font-[JejuMyeongjo]
+  <h1 className=' self-stretch font-[JejuMyeongjo]
   text-[24px] md:text-[32px]'>
     Ticket Selection</h1>
   <p className='text-[16px] leading-[24px] text-[fafafa]'>
     Step 1/3</p>
-</div>
+</div> */}
+
+<SubHeader title='Select Ticket'  step='Step 1/3'/>
 {/* header message ends here */}
 
 
