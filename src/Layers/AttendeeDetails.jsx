@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { IoCloudDownloadOutline } from "react-icons/io5";
 import { Link, useNavigate } from 'react-router-dom';
 import FormContext from '../Context/FormContext';
+import SubHeader from '../Components/selectTicket/SubHeader';
 
 
 const AttendeeDetails = () => {
@@ -71,16 +72,20 @@ gap-[32px]  md:w-[700px] w-[375px]  self-stretch   flex flex-col  rounded-[24px]
 {/* Header Starts Here */}
 <div>
  
-<div className='flex flex-col md:gap-[300px] md:flex-row  text-white'>
+{/* <div className='flex flex-col md:gap-[300px] md:flex-row  text-white'>
     <h1 className='text-[#fff] font-[JejuMyeongjo] self-stretch text-[24px] md:text-[32px]font-normal '>Attendee Details</h1>
     <p className='font-[Roboto] mt-4 text-[16px] font-normal  '>
       Step 2/3</p>
+</div> */}
+<div className='w-full '>
+<SubHeader title='Attendee Details' step='Step 2/3'/>
+
 </div>
 
 {/* Progress bar */}
 
 <div className='self-stretch w-full flex rounded-[5px] bg-[#0E464F] h-[4px] pr-[278px] items-center '>
-<div className=':w-[326px]  self-stretch bg-[#24a0b5] '></div>
+<div className=':w-[26px]  self-stretch bg-[#24a0b5] '></div>
 <div className='bg-[#0E464F] '></div>
 
 
