@@ -78,7 +78,7 @@ gap-[32px]  md:w-[700px] w-[375px]  self-stretch   flex flex-col  rounded-[24px]
     <p className='font-[Roboto] mt-4 text-[16px] font-normal  '>
       Step 2/3</p>
 </div> */}
-<div className='w-full '>
+<div className='w-full self-stretch'>
 <SubHeader title='Attendee Details' step='Step 2/3'/>
 <ProgressBar />
 </div>

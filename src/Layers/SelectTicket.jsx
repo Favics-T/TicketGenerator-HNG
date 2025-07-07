@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { FaMapPin } from "react-icons/fa";
 import FormContext from '../Context/FormContext';
 import SubHeader from '../Components/selectTicket/SubHeader';
+import ProgressBar from '../Components/selectTicket/ProgressBar';
 
 const SelectTicket= () => {
    const {ticketList, ticket,setTicket,handleSelectTicket} = useContext(FormContext)
@@ -16,33 +17,11 @@ const SelectTicket= () => {
     rounded-[40px] items-center md:justify-center md:gap-[32px] gap-[48px]  '>
 
 {/* Header Starts Here */}
-<div className=' flex flex-col gap-[12px] justify-end items-start
-self-stretch'>
- <div>
-  
- </div>
-  {/* header message starts here */}
-{/* <div className='flex  justify-between w-full flex-col sm:flex-row text-[#fff] font-[Roboto] md:flex-row '>
-  
-  <h1 className=' self-stretch font-[JejuMyeongjo]
-  text-[24px] md:text-[32px]'>
-    Ticket Selection</h1>
-  <p className='text-[16px] leading-[24px] text-[fafafa]'>
-    Step 1/3</p>
-</div> */}
-
-<SubHeader title='Select Ticket'  step='Step 1/3'/>
-{/* header message ends here */}
-
-
-{/* progress bar starts here */}
-<div className='flex w-[287px] md:w-[604px] bg-[#0E464F] h-[4px] self-stretch rounded-[5px]'>
-  <div className='bg-[#24A0B5] w-[232px] md:w-[325px]'></div>
-  
+<div className=' flex flex-col gap-[12px] self-stretch'>
+  <SubHeader title='Select Ticket'  step='Step 1/3'/>
+<ProgressBar />
 </div>
-{/* progress bar ends here */}
-</div>
-{/* Header Ends Here */}
+
 
 {/* Body Start here */}
 <div className='p-[24px] flex flex-col gap-[32px] md:border border-[#0e464f] justify-center item-start
