@@ -3,6 +3,7 @@ import { IoCloudDownloadOutline } from "react-icons/io5";
 import { Link, useNavigate } from 'react-router-dom';
 import FormContext from '../Context/FormContext';
 import SubHeader from '../Components/selectTicket/SubHeader';
+import ProgressBar from '../Components/selectTicket/ProgressBar';
 
 
 const AttendeeDetails = () => {
@@ -79,17 +80,15 @@ gap-[32px]  md:w-[700px] w-[375px]  self-stretch   flex flex-col  rounded-[24px]
 </div> */}
 <div className='w-full '>
 <SubHeader title='Attendee Details' step='Step 2/3'/>
-
+<ProgressBar />
 </div>
 
 {/* Progress bar */}
 
-<div className='self-stretch w-full flex rounded-[5px] bg-[#0E464F] h-[4px] pr-[278px] items-center '>
-<div className=':w-[26px]  self-stretch bg-[#24a0b5] '></div>
+{/* <div className='self-stretch w-full flex rounded-[5px] bg-[#0E464F] h-[4px] pr-[278px] items-center '>
+<div className=':  self-stretch bg-[#24a0b5] '></div>
 <div className='bg-[#0E464F] '></div>
-
-
-</div>
+</div> */}
 </div>
 
 
