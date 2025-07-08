@@ -63,7 +63,7 @@ const AttendeeDetails = () => {
 
   return (
     
-    <div className='bg-[#02191D] text-[#ffff] h-auto flex justify-center '>
+    <div className='bg-[#02191D] text-[#ffff]  flex justify-center '>
      
 <div className='bg-[#041e23] border 
 md:m-[48px] m-[64px 20px] py-[24px] md:py-[48px] px-[24px] md:p-[24px] 
@@ -71,14 +71,14 @@ md:m-[48px] m-[64px 20px] py-[24px] md:py-[48px] px-[24px] md:p-[24px]
 gap-[32px]  md:w-[700px] w-[375px]  self-stretch   flex flex-col  rounded-[24px]  '>
 
 {/* Header Starts Here */}
-<div>
+
  
 {/* <div className='flex flex-col md:gap-[300px] md:flex-row  text-white'>
     <h1 className='text-[#fff] font-[JejuMyeongjo] self-stretch text-[24px] md:text-[32px]font-normal '>Attendee Details</h1>
     <p className='font-[Roboto] mt-4 text-[16px] font-normal  '>
       Step 2/3</p>
 </div> */}
-<div className='w-full self-stretch'>
+<div className='w-full  self-stretch'>
 <SubHeader title='Attendee Details' step='Step 2/3'/>
 <ProgressBar />
 </div>
@@ -89,7 +89,7 @@ gap-[32px]  md:w-[700px] w-[375px]  self-stretch   flex flex-col  rounded-[24px]
 <div className=':  self-stretch bg-[#24a0b5] '></div>
 <div className='bg-[#0E464F] '></div>
 </div> */}
-</div>
+
 
 
 {/* Header ends here */}
