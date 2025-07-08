@@ -6,6 +6,8 @@ import { FaMapPin } from "react-icons/fa";
 import FormContext from '../Context/FormContext';
 import SubHeader from '../Components/selectTicket/SubHeader';
 import ProgressBar from '../Components/selectTicket/ProgressBar';
+import selectButton from '../Components/selectTicket/selectButton';
+
 
 const SelectTicket= () => {
    const {ticketList, ticket,setTicket,handleSelectTicket} = useContext(FormContext)
@@ -96,6 +98,10 @@ rounded-[32px] bg-[#08252b]'>
                   <p className="text-gray-300 text-sm text-start">20/52</p>
                 </button>
               ))}
+            </div>
+
+            <div>
+              <selectButton />
             </div>
   </div>
   {/* Ticket Type Ends Here */}
